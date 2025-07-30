@@ -3,10 +3,10 @@ import express from 'express';
 import cors from 'cors';
 import {connectoDB} from './CONFIGDB/connectoDB.js'
 import { insertarSemillaDB } from './CONFIGDB/insertSemillaDB.js';
-import apiRoutes from './'
+import apiRoutes from './ROUTES/apiRoutes.js'
 
 const app =express();
-const PORT =4200;
+const PORT =4100;
 
 app.use(cors());
 app.use(express.json());
@@ -16,8 +16,10 @@ app.get('/prueba', (req, res) => {
   res.json({message: 'Prueba de respuesta de servidor'});
 });
 
+app.use("/api",apiRoutes);
+
 connectoDB();
-insertarSemillaDB();
+// insertarSemillaDB();
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
