@@ -5,6 +5,6 @@ import {
     listarUsuarios
 } from '../CONTROLLERS/usuarioControllers.js';
 
-router.get('/usuarios', listarUsuarios);
+router.get('/', listarUsuarios);
 
 export default router
